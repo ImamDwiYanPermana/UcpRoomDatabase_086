@@ -12,5 +12,7 @@ import kotlinx.coroutines.flow.Flow
 interface BarangDao {
     @Insert
     suspend fun insertBarang(barang: Barang)
+    @Update
+    suspend fun updateBarang(barang: Barang)
 
 }
