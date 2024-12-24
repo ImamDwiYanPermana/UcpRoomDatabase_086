@@ -134,3 +134,129 @@ fun BodyHomeSplView(
         }
     }
 }
+
+@Composable
+fun ListSuplier(
+    listSpl: List<Suplier>,
+    modifier: Modifier = Modifier,
+    onClick: (String) -> Unit = { }
+) {
+    LazyColumn(
+        modifier = modifier
+    ) {
+        items(
+            items = listSpl,
+            itemContent = { spl ->
+                cardSpl(
+                    spl = spl,
+                    onClick = { onClick(spl.id) }
+                )
+            }
+        )
+    }
+}
+
+@SuppressLint("ComposableNaming")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun cardSpl(
+    spl: Suplier,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = { }
+) {
+    val lightPurple = Color(0xFFD1C4E9)
+
+    Card(
+        onClick = onClick,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .clip(MaterialTheme.shapes.medium),
+        colors = CardDefaults.cardColors(containerColor = lightPurple)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Person,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = spl.nama,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Phone,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = spl.kontak,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 16.sp,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Home,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = spl.alamat,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 16.sp,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Info,
+                    contentDescription = null,
+                    tint = Color.Gray,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = "ID: ${spl.id}",
+                    fontWeight = FontWeight.Light,
+                    fontSize = 14.sp,
+                    color = Color.Gray,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        }
+    }
+}
