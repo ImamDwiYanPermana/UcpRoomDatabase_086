@@ -76,3 +76,58 @@ fun HomeBrgView(
         )
     }
 }
+
+@Composable
+fun BodyHomeBrgView (
+    homeUiState: com.example.ucp2pam.ui.viewModel.barangModel.HomeBrgUiState,
+    modifier: Modifier = Modifier,
+    onClick: (String) -> Unit,
+) {
+    val coroutineScope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+    when {
+        homeUiState.isLoading -> {
+            //menampilkan indikator loading
+            Box (
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        }
+
+        homeUiState.isError -> {
+            LaunchedEffect(homeUiState.errorMessage) {
+                homeUiState.errorMessage?.let{ message ->
+                    coroutineScope.launch {
+                        snackbarHostState.showSnackbar(message)
+                    }
+                }
+            }
+        }
+
+        homeUiState.listBrg.isEmpty() -> {
+            Box (
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text (
+                    text = "Tidak ada data Barang. ",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+        else -> {
+            ListBarang(
+                listBrg = homeUiState.listBrg,
+                onClick = {
+                    onClick(it)
+                    println(it)
+                },
+                modifier = modifier
+            )
+        }
+    }
+}
