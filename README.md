@@ -17,3 +17,6 @@ validasi hapus
 ![Screenshot 2024-12-24 103509](https://github.com/user-attachments/assets/53bbdd8a-c3e5-4aa0-9d97-4d5139bf917d)
 hasil setelah di hapus
 ![Screenshot 2024-12-24 103520](https://github.com/user-attachments/assets/1cf46d68-a5b1-41cf-a5da-8a894ae08ab5)
+
+video
+https://drive.google.com/file/d/1V6iwhS5An55HJo2usKwejL0PgG9izVkg/view?usp=drive_link
