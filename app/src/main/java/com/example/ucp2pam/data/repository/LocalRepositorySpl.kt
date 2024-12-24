@@ -6,14 +6,13 @@ import kotlinx.coroutines.flow.Flow
 
 class LocalRepositorySpl (
     private val suplierDao: SuplierDao
-): RepositorySpl{
-    override suspend fun insertSpl(suplier: Suplier){
+) : RepositorySpl {
+    override suspend fun insertSuplier(suplier: Suplier) {
         suplierDao.insertSuplier(suplier)
     }
-
-    override fun getAllSpl(): Flow<List<Suplier>> =
+    override fun getAllSuplier(): Flow<List<Suplier>> =
         suplierDao.getAllSuplier()
 
-    override fun getSpl(id: String): Flow<Suplier> =
+    override fun getSuplier(id: String): Flow<Suplier> =
         suplierDao.getSupplier(id)
 }
