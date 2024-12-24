@@ -4,9 +4,9 @@ import com.example.ucp2pam.data.entity.Barang
 import kotlinx.coroutines.flow.Flow
 
 interface RepositoryBrg {
-    suspend fun  insertBrg(barang: Barang)
-    fun getAllBrg(): Flow<List<Barang>>
-    fun getBrg(nama: String): Flow<Barang>
-    suspend fun deleteBrg (barang: Barang)
-    suspend fun updateBrg (barang: Barang)
+    suspend fun insertBarang(barang: Barang)
+    fun getAllBarang(): Flow<List<Barang>>
+    fun getBarang(id: String): Flow<Barang>
+    suspend fun deleteBarang(barang: Barang)
+    suspend fun updateBarang(barang: Barang)
 }
