@@ -14,5 +14,10 @@ interface BarangDao {
     suspend fun insertBarang(barang: Barang)
     @Update
     suspend fun updateBarang(barang: Barang)
-
+    @Delete
+    suspend fun deleteBarang(barang: Barang)
+    @Query("SELECT * FROM barang ORDER BY namabarang ASC")
+    fun getAllBarang(): Flow<List<Barang>>
+    @Query("SELECT * FROM barang WHERE idbarang = :id")
+    fun getBarang(id: String): Flow<Barang>
 }
