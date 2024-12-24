@@ -194,5 +194,28 @@ fun ComponentDetailBarang(
     }
 }
 
-
+@Composable
+private fun DeleteConfirmationDialog(
+    onDeleteConfirm: () -> Unit,
+    onDeleteCancel: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AlertDialog(
+        onDismissRequest = { },
+        title = { Text("Konfirmasi Hapus") },
+        text = { Text("Apakah Anda yakin ingin menghapus data ini?") },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = onDeleteCancel) {
+                Text("Batal")
+            }
+        },
+        confirmButton = {
+            Button(onClick = onDeleteConfirm, colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.error
+            )) {
+                Text("Hapus")
+            }
+        }
+    )
 }
